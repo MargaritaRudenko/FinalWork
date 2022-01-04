@@ -22,3 +22,11 @@ void NewArray (int [] array)
         if (array[i] % 2 == 0) Console.Write($"{array[i]} ");
     }
 }
+
+int [] array = new int [10];
+FillArray(array);
+PrintArray(array);
+
+Console.WriteLine();
+
+NewArray(array);
