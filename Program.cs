@@ -1,8 +1,8 @@
-﻿void FillArray(int[] arrayCreation)
+﻿void FillArray(int[] arrayCreation, int minValue, int maxValue)
 {
     for(int i=0; i<arrayCreation.Length; i++)
     {
-        arrayCreation[i] = new Random().Next(1, 100);
+        arrayCreation[i] = new Random().Next(minValue, maxValue);
     }
 }
 
@@ -15,18 +15,37 @@ void PrintArray(int[] arrayOnScrean)
 
 }
 
-void NewArray (int [] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] % 2 == 0) Console.Write($"{array[i]} ");
-    }
-}
-
-int [] array = new int [10];
-FillArray(array);
+int [] array = new int[10];
+FillArray(array, -100, 100);
 PrintArray(array);
 
 Console.WriteLine();
 
-NewArray(array);
+int Total (int[] array)
+{
+    int totalNumber = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 == 0) totalNumber++;
+       
+    }
+    return totalNumber;
+}
+
+int[] NewArray (int[] array, int totalNumber)
+{
+    int[] newArray = new int [totalNumber];
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] % 2 == 0)
+        {
+            newArray[count] = array[i];
+            count++;
+        } 
+    }
+    return newArray;
+  
+}
+
+PrintArray(NewArray(array, Total(array)));
